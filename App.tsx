@@ -22,6 +22,7 @@ const App: React.FC<Props> = () => {
   const [toDoList, setToDos] = useState<Notes[]>([]);
   const [error, showError] = useState<Boolean>(false);
 
+  // read the local storage and fill the state
   const readStorage = async() => {
     const data = await loadFromAsyncStorange();
     if(data){
@@ -30,7 +31,7 @@ const App: React.FC<Props> = () => {
   }
 
   
-
+  //handle submit for new taks
   const handleSubmit = () => {
     if (value.trim()){
       setToDos([...toDoList, { text: value, completed: false }]);
@@ -40,6 +41,7 @@ const App: React.FC<Props> = () => {
     setValue("");
   };
 
+  //remove one taks
   const removeItem = (index: number): void => {
     const newToDoList = [...toDoList];
     newToDoList.splice(index, 1);
@@ -47,6 +49,7 @@ const App: React.FC<Props> = () => {
     updateAsyncStorage([...newToDoList]);
   };
 
+  //complete or not the taks
   const toggleComplete = (index: number): void => {
     const newToDoList = [...toDoList];
     newToDoList[index].completed = !newToDoList[index].completed;

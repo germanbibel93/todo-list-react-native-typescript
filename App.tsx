@@ -32,29 +32,29 @@ const App: React.FC<Props> = () => {
 
   
   //handle submit for new taks
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (value.trim()){
       setToDos([...toDoList, { text: value, completed: false }]);
-      updateAsyncStorage([...toDoList]);
+      await updateAsyncStorage([...toDoList]);
     }
     else showError(true);
     setValue("");
   };
 
   //remove one taks
-  const removeItem = (index: number): void => {
+  const removeItem = async (index: number) => {
     const newToDoList = [...toDoList];
     newToDoList.splice(index, 1);
     setToDos(newToDoList);
-    updateAsyncStorage([...newToDoList]);
+    await updateAsyncStorage([...newToDoList]);
   };
 
   //complete or not the taks
-  const toggleComplete = (index: number): void => {
+  const toggleComplete = async (index: number) => {
     const newToDoList = [...toDoList];
     newToDoList[index].completed = !newToDoList[index].completed;
     setToDos(newToDoList);
-    updateAsyncStorage([...newToDoList]);
+    await updateAsyncStorage([...newToDoList]);
   };
 
   useEffect(() => {

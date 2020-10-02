@@ -15,8 +15,8 @@ Clone down this repository. You will need `node`, `expo` and `yarn` installed gl
 
 Installation:
 
-`expo init`   
+`yarn`   
 
 To Start Dev Server:
 
-`expo start`  
+`expo start`  and click on `run iOS simulator or run Android device/emulator`
